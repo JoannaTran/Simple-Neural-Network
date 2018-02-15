@@ -1,6 +1,8 @@
 # Simple Neural Network
 
-This code is part of my tutorial on Medium : **[link](/)**
+This code is part of my tutorial on **Medium**
+
+**[https://medium.com/@aflakomar/neural-network-from-scratch-part-1-theory](https://medium.com/@aflakomar/neural-network-from-scratch-part-1-theory-7108a4ebfc75)**
 
 # Download, Compile & Run
 
