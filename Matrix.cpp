@@ -19,11 +19,11 @@ Matrix::Matrix(std::vector<std::vector<double> > const &array)
     this->array = array;
 }
 
-Matrix Matrix::multiply(double const &value)
+Matrix Matrix::multiply(double const &value) const
 {
 	Matrix result(height, width);
     int i,j;
-    
+
     for (i=0 ; i<height ; i++)
     {
         for (j=0 ; j<width ; j++)
@@ -141,7 +141,8 @@ Matrix Matrix::applyFunction(double (*function)(double)) const
     return result;
 }
 
-void Matrix::print(std::ostream &flux) const // pretty print, taking into account the space between each element of the matrix
+// pretty print, taking into account the space between each element of the matrix
+void Matrix::print(std::ostream &flux) const
 {
     int i,j;
     int maxLength[width] = {};
@@ -174,10 +175,4 @@ void Matrix::print(std::ostream &flux) const // pretty print, taking into accoun
         }
         flux << std::endl;
     }
-}
-
-std::ostream& operator<<(std::ostream &flux, Matrix const &m)
-{
-    m.print(flux);
-    return flux;
 }

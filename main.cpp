@@ -65,8 +65,8 @@ void learn(vector<double> expectedOutput)
 {
     Y2 = Matrix({expectedOutput}); // row matrix
 
-    // Error E = 1/2 (expectedOutput - computedOutput)^2
-    // Then, we need to calculate the partial derivative of E with respect to W1,W2,B1,B2
+    // Loss J = 1/2 (expectedOutput - computedOutput)^2
+    // Then, we need to calculate the partial derivative of J with respect to W1,W2,B1,B2
 
     // compute gradients
     dJdB2 = Y.subtract(Y2).multiply(H.dot(W2).add(B2).applyFunction(sigmoidePrime));
@@ -74,7 +74,7 @@ void learn(vector<double> expectedOutput)
     dJdW2 = H.transpose().dot(dJdB2);
     dJdW1 = X.transpose().dot(dJdB1);
 
-    // update weights
+    // update weights and biases
     W1 = W1.subtract(dJdW1.multiply(learningRate));
     W2 = W2.subtract(dJdW2.multiply(learningRate));
     B1 = B1.subtract(dJdB1.multiply(learningRate));

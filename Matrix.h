@@ -4,6 +4,14 @@
 #include <vector>
 #include <iostream>
 
+/**
+    Every method ends with "const" keyword which means that the object on which the method is called is never modified.
+    Instead it will return a new Matrix.
+
+    It is not very efficient, and it could be a lot faster,
+    but for the sake of simplicity we will stick to this architecture.
+**/
+
 class Matrix
 {
 public:
@@ -11,14 +19,13 @@ public:
     Matrix(int height, int width);
     Matrix(std::vector<std::vector<double> > const &array);
 
-    Matrix multiply(double const &value); // scalar multiplication
-
     Matrix add(Matrix const &m) const; // addition
     Matrix subtract(Matrix const &m) const; // subtraction
     Matrix multiply(Matrix const &m) const; // hadamard product
     Matrix dot(Matrix const &m) const; // dot product
     Matrix transpose() const; // transposed matrix
 
+    Matrix multiply(double const &value) const; // scalar multiplication
     Matrix applyFunction(double (*function)(double)) const; // to apply a function to every element of the matrix
 
     void print(std::ostream &flux) const; // pretty print of the matrix
@@ -29,6 +36,11 @@ private:
     int width;
 };
 
-std::ostream& operator<<(std::ostream &flux, Matrix const &m); // overloading << operator to print easily
+// overloading operator "<<" to print easily
+std::ostream& operator<<(std::ostream &flux, Matrix const &m)
+{
+    m.print(flux);
+    return flux;
+}
 
 #endif
