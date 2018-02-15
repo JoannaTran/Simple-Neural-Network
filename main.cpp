@@ -12,16 +12,19 @@ using namespace std;
 Matrix X, W1, H, W2, Y, B1, B2, Y2, dJdB1, dJdB2, dJdW1, dJdW2;
 double learningRate;
 
+// used to init random weights and biases
 double random(double x)
 {
     return (double)(rand() % 10000 + 1)/10000-0.5;
 }
 
+// the sigmoid function
 double sigmoid(double x)
 {
     return 1/(1+exp(-x));
 }
 
+// the derivative of the sigmoid function
 double sigmoidePrime(double x)
 {
     return exp(-x)/(pow(1+exp(-x), 2));
@@ -53,6 +56,7 @@ void init(int inputNeuron, int hiddenNeuron, int outputNeuron, double rate)
     B2 = B2.applyFunction(random);
 }
 
+// forward propagation
 Matrix computeOutput(vector<double> input)
 {
     X = Matrix({input}); // row matrix
@@ -61,6 +65,7 @@ Matrix computeOutput(vector<double> input)
     return Y;
 }
 
+// back propagation and params update
 void learn(vector<double> expectedOutput)
 {
     Y2 = Matrix({expectedOutput}); // row matrix
@@ -122,12 +127,11 @@ int main(int argc, char *argv[])
 
     // 32*32=1024 input neurons (images are 32*32 pixels)
     // 15 hidden neurons (experimental)
-    // 10 output neurons (for each image output is a vector of size 10, full of zeros and a 1 at the index of the number represented)
+    // 10 output neurons (for every input, the output is a vector of size 10, full of zeros and a 1 at the index of the number represented)
     // 0.7 learning rate (experimental)
     init(1024, 15, 10, 0.7);
 
     // train on 30 iterations
-    // could be more but to my surprise it is very slow... I did the same program in Java and it was a lot faster, so I probably messed up somewhere...
     for (int i=0 ; i<30 ; i++)
     {
         for (int j=0 ; j<inputVector.size()-10 ; j++) // skip the last 10 examples to test the program at the end
@@ -138,7 +142,7 @@ int main(int argc, char *argv[])
         cout << "#" << i+1 << "/30" << endl;
     }
 
-    // test
+    // test network
     cout << endl << "expected output : actual output" << endl;
     for (int i=inputVector.size()-10 ; i<inputVector.size() ; i++) // testing on last 10 examples
     {
