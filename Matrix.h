@@ -37,7 +37,7 @@ private:
 };
 
 // overloading operator "<<" to print easily
-std::ostream& operator<<(std::ostream &flux, Matrix const &m)
+static std::ostream& operator<<(std::ostream &flux, Matrix const &m)
 {
     m.print(flux);
     return flux;
