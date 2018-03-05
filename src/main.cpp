@@ -4,7 +4,7 @@
 #include <time.h>
 #include <cmath>
 
-#include "Matrix.h"
+#include "../include/Matrix.h"
 
 using namespace std;
 
@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
 
     // learning digit recognition (0,1,2,3,4,5,6,7,8,9)
     std::vector<std::vector<double> > inputVector, outputVector;
-    loadTraining("training", inputVector, outputVector); // load data from file called "training"
+    loadTraining("data/training", inputVector, outputVector); // load data from file called "training"
 
     // 32*32=1024 input neurons (images are 32*32 pixels)
     // 15 hidden neurons (experimental)

@@ -9,5 +9,6 @@ This code is part of my tutorial on **Medium**
 ```
 git clone https://github.com/OmarAflak/Simple-Neural-Network.git
 cd Simple-Neural-Network
-sh compile.sh
+make
+./main
 ```

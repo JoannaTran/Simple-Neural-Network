@@ -1,8 +1,10 @@
 #ifndef DEF_MATRIX
 #define DEF_MATRIX
 
-#include <vector>
 #include <iostream>
+#include <sstream>
+#include <vector>
+#include <assert.h>
 
 /**
     Every method ends with "const" keyword which means that the object on which the method is called is never modified.
